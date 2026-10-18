@@ -1,53 +1,50 @@
-# Sources, conventions and translation boundaries
+# Original-source map
 
-These notebooks accompany Aditya Banerjee's 2023 MSc Applied Physics project, [*Understanding the Magnetic Vortex State in Topological Superconductors*](https://drive.google.com/file/d/1d9WheYwEY23cPAlLxxVOUfQDr9jLdqb9/view). Page references below use the printed thesis page numbers, not PDF viewer indices. The 2023 BdG thesis is distinct from the later anyon/Rydberg thesis.
+## Authoritative sources
 
-## What comes from the committed code
+- **Thesis:** Aditya Banerjee, *Understanding the Magnetic Vortex State in Topological Superconductors*, MSc Applied Physics, 2023. [Original PDF](https://drive.google.com/file/d/1d9WheYwEY23cPAlLxxVOUfQDr9jLdqb9/view).
+- **Original code:** [`BdG topological.nb`](https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-/blob/d88d12cded1a954d53c2d36d515525c8100ded1c/BdG%20topological.nb) and [`added vortex.nb`](https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-/blob/d88d12cded1a954d53c2d36d515525c8100ded1c/added%20vortex.nb), pinned to original repository commit `d88d12cded1a954d53c2d36d515525c8100ded1c`.
 
-Source snapshot: [`d88d12cded1a954d53c2d36d515525c8100ded1c`](https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-/tree/d88d12cded1a954d53c2d36d515525c8100ded1c). Original `.nb` and `.wdx` files are preserved. No Python implementation existed in that snapshot. The new Python functions are translations or explicitly labelled extensions, not original Python supplied by the author. Mathematica was not available for an independent rerun of saved output.
+No external derivation, newly chosen model, Python solver or newly computed plot is used in this edition. The notebook text provides navigation and source-status notes. Equations, derivation steps, figure labels and explanatory passages are preserved through full-page thesis images.
 
-The references to cells below count the initial `Code` cell and the subsequent `Input` cells. Empty or saved-output cells are excluded. Line numbers refer to the original text representation of each `.nb` file, at the pinned commit.
+## Thesis pages
 
-| New function or section | Mathematica source | Thesis location | Status |
-| --- | --- | --- | --- |
-| `coordinates`, `legacy_blocks` | `BdG topological.nb`, cell 1, line 23; `added vortex.nb`, cell 1, line 23 | Related lattice discussion, §4.4 | Translation of original periodic indexing and hopping dictionaries; tutorial sizes reduced. |
-| `legacy_bdg` | `SCs` in cell 2, lines 922 / 948; active `hh1`, `hh2`, `H` in cell 5, lines 1441 / 1480 | Eqs. (4.10)–(4.12), pp. 45–46 | Translation of active matrix; canonical sign transformation is added algebra. |
-| `source_fermi` | Cell 3, lines 1049 / 1075 | Mean fields, §4.1, pp. 30–33 | Retains source cutoff and thermal energy. Stable exponential evaluation is an implementation change. |
-| `source_observables`, `source_iteration` | Cell 5, lines 1441 / 1480 | Mean-field framework, §4.1 | Retains full-state sums, mixing, chemical-potential update and 100 steps. Added residual diagnostics and a final evaluation do not change updates. |
-| `thesis_normal` | Contrasted with cell 1; **not** a translation of the active hopping | Eqs. (4.8)–(4.9), pp. 45–46 | New implementation of the stated thesis lattice model. |
-| `canonical_bdg`, `canonical_checks` | Compared algebraically with active cell 5 | Pairing/BdG discussion, §§4.1, 4.4 | Explicit canonical basis and verification helpers. |
-| `vortex_field` | Commented vortex prototype within cell 5 | Eq. (4.2), p. 34; phase discussion Eq. (4.4) | Extension with corrected `atan2` phase and explicit open boundaries. |
-| `add_impurity` | `Vimp=0` in cell 1; `+imp` disabled in cell 5 | Eqs. (4.6)–(4.7), pp. 39–40; §§4.4.1–4.4.2 | New implementation of thesis impurity terms; frozen gap. |
-| `electron_ldos` | No active LDOS routine translated | LDOS discussion, §4.1, p. 32 | New full-spectrum, spin-summed convention; derivation and sum rule shown. |
+The PDF has 14 pages before printed page 1. Thus printed page 46 is PDF viewer page 60. The following complete pages are rendered at 120 dpi without cropping, recolouring or redrawing:
 
-## Differences that must remain visible
-
-1. **Hopping range and coefficients.** The active code uses diagonal neighbours with amplitude `m/4` and nearest axial hopping `-m`. The thesis mass uses axial distance-two hopping `m/8` and nearest axial hopping `-m/2`, with a spin `sigma_z` factor. They are different models.
-2. **Spin mixing.** The active code assigns `lambda*(1-i)` to all four axial directions. The thesis model requires directional imaginary hoppings to generate sine terms in momentum space.
-3. **Spin-diagonal blocks.** The unused `Hop1x` definition has opposite `H1` signs. The active loop uses the same `H1` in `Huu` and `Hdd`. The translation follows the loop.
-4. **Chemical-potential sign.** The source has `H1 - Chempot1[mu]` with `Chempot1=-mu I`, so its active block contains `+mu I`. Thesis Eq. (4.8) contains `-mu I`. Each implementation retains its stated convention; the same numeric `mu` must not be assumed physically equivalent across them.
-5. **Nambu signs.** The symmetric source pairing block is mapped to antisymmetric canonical spin-singlet pairing by a down-hole sign change and `Delta=-st`. This exact matrix identity is demonstrated and tested, including complex gaps. It is an algebraic interpretation of the saved matrix, not a documented basis statement from its author.
-6. **Vortex status and phase.** The vortex update is commented out in both originals. The absolute-value arctangent in that prototype and thesis Eq. (4.4) cannot wind through all quadrants. The extension uses `atan2`, with its winding explicitly checked.
-7. **Length units.** The relation in thesis Eq. (4.3) cannot be used as an SI coherence length without further unit conventions. The tutorial specifies `xi/a` independently.
-8. **Time reversal.** The sentence after thesis Eq. (4.8) describes the mass as time-reversal preserving. For physical spin time reversal, an even-in-momentum `M_k sigma_z` changes sign. The notebooks show this correction and cite the primary model paper below.
-9. **Boundary and field assumptions.** Source translation uses periodic boundaries. Isolated-vortex extensions use finite open boundaries and imposed pairing, without vector potential or screening. They are not a periodic magnetic-vortex-lattice solution.
-10. **Convergence and identification.** One hundred updates are not a convergence criterion. A low-energy eigenvalue or broadened LDOS peak alone does not identify a Majorana mode. The notebooks report residuals and limit their claims accordingly.
-
-## Tutorial parameters versus archived calculations
-
-| Calculation | Executed tutorial | Original / thesis context |
+| Reading notebook | Printed pages | Material |
 | --- | --- | --- |
-| Normal-state comparison | 6 × 6 periodic; m=0.5, lambda=1, mu=0 | Code uses 20 × 20. |
-| Matrix/basis demonstration | 4 × 4 periodic; mu=0.13, st=-0.05 | Nonzero example chosen to test signs. |
-| Source iterations | 4 × 4 periodic; 100 steps; initial st=-0.01, mu=0 | Original 20 × 20; couplings/targets retained: (-1.45, 1.2), (-1.25, 1.0). |
-| Vortex and impurity extensions | 11 × 11 open; m=0.5, lambda=1, mu=-0.7, Delta0=0.2, xi/a=1.5 | The thesis discusses 20 × 20 samples; these finite-size examples are not figure reproductions. |
-| Impurity/LDOS sweep | V/E0=0, 0.5, 2; eta/E0=0.02; fixed pairing | Demonstration settings; no self-consistent impurity relaxation. |
+| 01 | 17–20, 45–46 | Tight-binding derivation (§2.7), Figure 2.1, and topological Hamiltonian Eqs. (4.8)–(4.13). |
+| 02 | 30–31, 46–47 | Mean-field/BdG construction, spin matrix and original spectrum Figure 4.20. |
+| 03 | 31–33 | Original self-consistency equations, LDOS expression and calculation discussion. |
+| 04 | 34–39, 47–48 | Original vortex expression, Eqs. (4.2)–(4.5), conventional vortex figures and Figures 4.20–4.22. |
+| 05 | 32, 39–46, 49–52 | Original LDOS/impurity definitions, conventional impurity figures and topological impurity Figures 4.23–4.29. |
 
-All parameters expressed as energies are in a common chosen energy unit `E0`. No material-specific SI calibration is inferred. Computational functions use dense matrices, so memory grows as N² and full diagonalization roughly as N³ for N sites. Increasing from 4 × 4 to 20 × 20 greatly increases the iterative cost.
+Across the notebooks this includes all Chapter 4 figure pages, with the original captions. Some pages appear in more than one notebook so the associated equation is available where needed. [reference_pages/manifest.json](reference_pages/manifest.json) records the PDF hash, printed/PDF page mapping and SHA-256 hash of each of the 27 PNG files.
 
-## Verified external references
+## Original code cells
 
-- Liang Fu and C. L. Kane, *Superconducting Proximity Effect and Majorana Fermions at the Surface of a Topological Insulator*, Physical Review Letters **100**, 096407 (2008). [arXiv:0707.1692](https://arxiv.org/abs/0707.1692); [publisher DOI: 10.1103/PhysRevLett.100.096407](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.100.096407). Background for the induced-superconductivity/vortex setting; not evidence that the saved code implements every condition of that theory.
-- Vedangi Pathak, Stephan Plugge and Marcel Franz, *Majorana bound states in vortex lattices on iron-based superconductors*, Annals of Physics **435**, 168431 (2021). [arXiv:2012.10588](https://arxiv.org/abs/2012.10588); [full text, §§2.1–2.2](https://arxiv.org/html/2012.10588v2); [DOI: 10.1016/j.aop.2021.168431](https://doi.org/10.1016/j.aop.2021.168431). Used to verify the lattice mass, basis conventions and the need for additional gauge treatment under periodic vortex boundary conditions.
+The input numbering below counts nonempty `Code`/`Input` calculation cells. It excludes empty cells and the final empty drawing canvas. Source line numbers refer to the text of the pinned `.nb` files.
 
-No new result in these tutorials is claimed as a reproduction of a published figure. Derivations and numerical diagnostics added for explanation are labelled explicitly in each notebook.
+| Input | BdG topological.nb line | added vortex.nb line | Original content |
+| --- | ---: | ---: | --- |
+| 1 | 23 | 23 | Parameters, hopping dictionaries, 20 × 20 lattice, site indices, periodic matrices and `Hop1x`. |
+| 2 | 922 | 948 | Onsite pairing construction `SCs`. |
+| 3 | 1049 | 1075 | Fermi function, coupling, density target and pairing initialization. |
+| 4 | 1398 | 1437 | Commented alternative BdG construction. |
+| 5 | 1441 | 1480 | Complete active 100-step iteration, observables, commented vortex prototype and exports. |
+| 6 | 4032 | 45843 | Original sorting input. |
+| 7 | 4073 | 45884 | Original `ListPlot`, including its original plot label, range and grid lines. |
+
+All seven cells from each source are stored in `original_code/*.wl`. The paired JSON files preserve their original `BoxData`, decoded text, original line number and hash. Each notebook code block is an exact contiguous excerpt of that decoded text; metadata records its source cell and character offsets. The extractor flattens `RowBox` string lists and decodes the outer notebook string representation, including escaped line continuations. It does not evaluate or translate Wolfram expressions. Named Wolfram characters and embedded plot-label formatting are retained.
+
+## Preserved source differences and missing workflows
+
+- Original `Nx=20`, `Ny=20`, `iter=100`, coupling and density targets are retained. No small-lattice substitute is used.
+- `BdG topological.nb` and `added vortex.nb` keep their separate parameter values and plot labels. Labels in saved plotting cells are not assumed to match all current initialization values.
+- The hopping dictionary differs from the printed thesis Hamiltonian. The unused `Hop1x` definition also differs from the active loop. Both originals are preserved.
+- The vortex prototype stays inside its original comment delimiters. Its original arctangent and length expression are not replaced or activated.
+- `Vimp=0` and the commented `+imp` term are shown as found. No active impurity sweep or active routine producing all thesis LDOS plots was found in these input cells.
+- The original `.nb` files contain saved Mathematica graphics. They remain available in the original files; the notebook figure pages come from the thesis PDF, rather than a recreation of those graphics.
+- Original equations and interpretations are shown as printed, including unresolved convention issues. Their reproduction is not a claim of independent mathematical or experimental verification.
+
+The source-only revision supersedes the previous tutorial with new Python models, diagnostic examples and generated curves. That earlier version is retained only in Git history.

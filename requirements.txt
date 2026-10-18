@@ -1,8 +1,3 @@
-numpy>=1.26,<3
-scipy>=1.11,<2
-matplotlib>=3.8,<4
-jupyterlab>=4,<5
+# Building and verifying the source-only reading notebooks.
 nbformat>=5.9,<6
-nbclient>=0.10,<1
-ipykernel>=6,<8
-pytest>=8,<10
+# Original calculations require Mathematica; Python does not execute them.

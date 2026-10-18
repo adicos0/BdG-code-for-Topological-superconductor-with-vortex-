@@ -1,0 +1,181 @@
+{
+  "source_title": "Understanding the Magnetic Vortex State in Topological Superconductors",
+  "author": "Aditya Banerjee",
+  "year": 2023,
+  "source_url": "https://drive.google.com/file/d/1d9WheYwEY23cPAlLxxVOUfQDr9jLdqb9/view",
+  "source_pdf_sha256": "1937efbdd9ba3d92dd44d91cfdfa2f83250f0a620a5c0b71c419a0e4835acfc0",
+  "rendering": "Poppler pdftoppm -r 120 -png; complete pages, no cropping or redrawing",
+  "original_files_sha256": {
+    "BdG topological.nb": "98a24f8f660e64ecab336b95d4f63d82347007a071eb441a7bb52a46f9361389",
+    "added vortex.nb": "91ec9c8fe23531115a81ad58c16104109e98fef8f930a7fe3a77a2c36939e9cb",
+    "SCs.wdx": "52f1813dfebc68cf37430b64a46ad795aa671f8a7423bb645d279394d4007dd7",
+    "Hdd.wdx": "a370e30d56f007ba0d1a43b46a567071b884af83d4580955aacb3e75fb6b7f59",
+    "Hdu.wdx": "4e2f2f4c2d79f00cbc209b082d662838c6685a3bda35f68c11dae3eb5633b0cc",
+    "Hud.wdx": "9338aa261997119c9a1bc6d2ba62765a2ac7f78706a65e34690388d8028a4125",
+    "Huu.wdx": "a370e30d56f007ba0d1a43b46a567071b884af83d4580955aacb3e75fb6b7f59"
+  },
+  "pages": [
+    {
+      "printed_page": 17,
+      "pdf_page": 31,
+      "path": "reference_pages/thesis_p017.png",
+      "sha256": "6f900a2e4ac88ee2db60bac5d8bae24f7451a848f001640067df83d95dab753e"
+    },
+    {
+      "printed_page": 18,
+      "pdf_page": 32,
+      "path": "reference_pages/thesis_p018.png",
+      "sha256": "3605e1271f48d2e947a7a399fe650c94d129fa007543801482bf00d4f7ce73a9"
+    },
+    {
+      "printed_page": 19,
+      "pdf_page": 33,
+      "path": "reference_pages/thesis_p019.png",
+      "sha256": "19cae8d609c7df57bbcbc8d70c8ae8ec21cb2eade40722b7730fd3c89d3f5b2d"
+    },
+    {
+      "printed_page": 20,
+      "pdf_page": 34,
+      "path": "reference_pages/thesis_p020.png",
+      "sha256": "2fe4f2dc1a41ca5c33ca2867a9d44c3f96e495813f368859d12d8be185215b80"
+    },
+    {
+      "printed_page": 30,
+      "pdf_page": 44,
+      "path": "reference_pages/thesis_p030.png",
+      "sha256": "46cc978726ea200c651f9ac4971c24dd71f481cdb0442c9fa783581d8e37cb02"
+    },
+    {
+      "printed_page": 31,
+      "pdf_page": 45,
+      "path": "reference_pages/thesis_p031.png",
+      "sha256": "8f652c98f7479b0b9550d5393b2b0c5d24cc6ad7f3cb73cfe0b808b9fdb53c76"
+    },
+    {
+      "printed_page": 32,
+      "pdf_page": 46,
+      "path": "reference_pages/thesis_p032.png",
+      "sha256": "41e3f752f25b758a1d23ddf97f8817a3204e60c5079ef879b910ede5ecc3930b"
+    },
+    {
+      "printed_page": 33,
+      "pdf_page": 47,
+      "path": "reference_pages/thesis_p033.png",
+      "sha256": "dacd64930dba271d640cd9e5237db0d08501e1d577ef650060def5f517d21c6a"
+    },
+    {
+      "printed_page": 34,
+      "pdf_page": 48,
+      "path": "reference_pages/thesis_p034.png",
+      "sha256": "5ae8d465693dc434fbe79747e220b04cfedf02de50629388662fe5ac35150529"
+    },
+    {
+      "printed_page": 35,
+      "pdf_page": 49,
+      "path": "reference_pages/thesis_p035.png",
+      "sha256": "74c2e61df1b6fbe9e6f20c8d4a09c6ff98b26f63a0b06390786947d24aaac549"
+    },
+    {
+      "printed_page": 36,
+      "pdf_page": 50,
+      "path": "reference_pages/thesis_p036.png",
+      "sha256": "e14bca11d6cc3b3b363c1f738cb4e2db50844dd244c18106c92c39cabdbab8d9"
+    },
+    {
+      "printed_page": 37,
+      "pdf_page": 51,
+      "path": "reference_pages/thesis_p037.png",
+      "sha256": "7396508f25ef41d9056a35bbff4accd9d7b90ad1652858a7da9a578d35b55989"
+    },
+    {
+      "printed_page": 38,
+      "pdf_page": 52,
+      "path": "reference_pages/thesis_p038.png",
+      "sha256": "d631668620ac77613a62f443f82cfa270a482da0a44455c9403eb7b961d54945"
+    },
+    {
+      "printed_page": 39,
+      "pdf_page": 53,
+      "path": "reference_pages/thesis_p039.png",
+      "sha256": "924f967f8b08bb066d459825b8c5fb60b3e404c00096a685cee8b4090897e264"
+    },
+    {
+      "printed_page": 40,
+      "pdf_page": 54,
+      "path": "reference_pages/thesis_p040.png",
+      "sha256": "0910c295fbaf5fec0405e02e2441a721d23395ce14dfcfcf7300aaff04624b5b"
+    },
+    {
+      "printed_page": 41,
+      "pdf_page": 55,
+      "path": "reference_pages/thesis_p041.png",
+      "sha256": "a8d6245c4c7a30ccb3c4812ad41a5232b8fd582eafebae79f165843ec3598528"
+    },
+    {
+      "printed_page": 42,
+      "pdf_page": 56,
+      "path": "reference_pages/thesis_p042.png",
+      "sha256": "b6c87a4fe6ed7a72476b6ecc14d3a9324477e1c2e96325716c5c1a84a733c9e3"
+    },
+    {
+      "printed_page": 43,
+      "pdf_page": 57,
+      "path": "reference_pages/thesis_p043.png",
+      "sha256": "ab8b02e8159f1d946cfa02cf025f54a0e3fc1c75977b2caa577bda7d1a9bd6ae"
+    },
+    {
+      "printed_page": 44,
+      "pdf_page": 58,
+      "path": "reference_pages/thesis_p044.png",
+      "sha256": "15a7918e3bdc6bba98bc7ce72df73eac7869077890a6ed1bdc7a2ffc41ea9d4d"
+    },
+    {
+      "printed_page": 45,
+      "pdf_page": 59,
+      "path": "reference_pages/thesis_p045.png",
+      "sha256": "5d27df49ffd9992f70bc1cb43c89b59a3353c176c985390f596b3dc45b69136b"
+    },
+    {
+      "printed_page": 46,
+      "pdf_page": 60,
+      "path": "reference_pages/thesis_p046.png",
+      "sha256": "661c23d96c3ee8d58117559bc180ac9672a035375413651649219b7e59066c10"
+    },
+    {
+      "printed_page": 47,
+      "pdf_page": 61,
+      "path": "reference_pages/thesis_p047.png",
+      "sha256": "8ee4c26a5491f68e0d9db924b7970b55d1a58a8b6a9902dd40b644705eaccea0"
+    },
+    {
+      "printed_page": 48,
+      "pdf_page": 62,
+      "path": "reference_pages/thesis_p048.png",
+      "sha256": "a42bf8b4f7361d2940d36f1dd5f6dca0bde7cd0b67cf8dd350771878fee4a5e6"
+    },
+    {
+      "printed_page": 49,
+      "pdf_page": 63,
+      "path": "reference_pages/thesis_p049.png",
+      "sha256": "5679cff8bc80ea1a08e3d505cf496f7455d8ef7fc23816e6ed02c76e7b12aef7"
+    },
+    {
+      "printed_page": 50,
+      "pdf_page": 64,
+      "path": "reference_pages/thesis_p050.png",
+      "sha256": "3d72bba0878b11f6fcf4879a2400b28d8a4c3160aa4f3f0369f4fd07e38e8cdb"
+    },
+    {
+      "printed_page": 51,
+      "pdf_page": 65,
+      "path": "reference_pages/thesis_p051.png",
+      "sha256": "e6372dd7d59fa7cb78fdbf99bfbd886bbc4488a4bdc3dda10afd6047deee9397"
+    },
+    {
+      "printed_page": 52,
+      "pdf_page": 66,
+      "path": "reference_pages/thesis_p052.png",
+      "sha256": "9774cdcc5d3b4865bb25f2dc8f617b103f61696c753da386c8520ae938e6feed"
+    }
+  ]
+}
