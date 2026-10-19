@@ -37,7 +37,7 @@ def main():
             assert shown.mode == expected.mode
             assert shown.tobytes() == expected.tobytes(), diagram['path']
     assert sha256(ROOT/'original_code/vortex_ldos_original.m') == 'a5c27b03f1d6ea45677a2d47d808d641a5c17e633a25a0965be2ac6adf6ae635'
-    code_count, diagram_count, adapted_count = 0, 0, 0
+    code_count, diagram_count, supplied_count = 0, 0, 0
     used_diagrams = set()
     for path in sorted((ROOT/'notebooks').glob('*.ipynb')):
         notebook = nbformat.read(path, as_version=4)
@@ -51,12 +51,15 @@ def main():
                 actual = cell.source.split('```mathematica\n', 1)[1].rsplit('\n```', 1)[0]
                 assert actual == expected, f'Code changed: {path.name}'
                 code_count += 1
-            if 'adapted_code' in cell.metadata:
-                info = cell.metadata['adapted_code']
+            assert 'adapted_code' not in cell.metadata, 'Only original code is allowed'
+            if 'supplied_code' in cell.metadata:
+                info = cell.metadata['supplied_code']
                 expected = (ROOT/info['path']).read_text()[info['start']:info['end']]
                 actual = cell.source.split('```mathematica\n', 1)[1].rsplit('\n```', 1)[0]
-                assert actual == expected, f'Adapted code differs: {path.name}'
-                adapted_count += 1
+                assert actual == expected, f'Supplied code differs: {path.name}'
+                supplied_count += 1
+            if '```mathematica' in cell.source:
+                assert 'original_code' in cell.metadata or 'supplied_code' in cell.metadata, 'Unattributed code block'
             assert not re.search(r'thesis|chapter|reference_pages|drive.google', cell.source, re.I), path.name
             if 'diagram' in cell.metadata:
                 asset = cell.metadata['diagram']['asset']
@@ -67,8 +70,8 @@ def main():
                 assert (ROOT/'diagrams'/referenced).is_file()
         print('PASS', path.name)
     assert used_diagrams == {d['path'] for d in diagrams}
-    assert adapted_count == 11, adapted_count
-    print(f'{code_count} original and {adapted_count} adapted code excerpts; {diagram_count} diagrams with pixel-identical source regions.')
+    assert supplied_count == 11, supplied_count
+    print(f'{code_count} original and {supplied_count} supplied LDOS code excerpts; {diagram_count} diagrams with pixel-identical source regions.')
     print('No document comparisons or page scans in notebook text. Original .nb/.wdx hashes unchanged.')
 
 

@@ -8,7 +8,7 @@ The authoritative calculation files are `BdG topological.nb` and `added vortex.n
 
 | Input cell | BdG topological.nb line | added vortex.nb line | Content |
 | --- | ---: | ---: | --- |
-| 1 | 23 | 23 | Parameters, hopping dictionaries, 20 × 20 lattice, periodic matrices and `Hop1x`. |
+| 1 | 23 | 23 | Parameters, hopping dictionaries, lattice, periodic matrices and `Hop1x`. |
 | 2 | 922 | 948 | Onsite pairing construction `SCs`. |
 | 3 | 1049 | 1075 | Occupation function, coupling, target density and initialization. |
 | 4 | 1398 | 1437 | Commented alternative matrix construction. |
@@ -29,14 +29,14 @@ The extracted regions exclude captions, equations, surrounding paragraphs and pa
 ## Scope of the explanations
 
 - Matrix sizes, offsets, iteration order and signs are explained from the active source expressions.
-- A commented term is described as inactive. The newly supplied LDOS program is preserved separately; adaptations and reconstructed plotting routines are explicitly labelled.
+- A commented term is described as inactive. The supplied LDOS program is preserved separately and explained through exact source excerpts. Missing plotting routines are not reconstructed.
 - Archived diagram labels are retained. The supplied LDOS script reveals that its final horizontal index runs over energy samples, so notebook 05 explains the ambiguity without claiming that every historical image came from that command.
 - Heatmaps without a colour bar are not assigned numerical colour values.
 - The reversed vertical scales in several surfaces are explained explicitly; visual upward direction is not treated as numerical increase.
 - Energy levels near zero are described as energy observations, without assigning an unsupported physical identity.
 
-## Supplied LDOS file and adaptations
+## Supplied LDOS file
 
-`original_code/vortex_ldos_original.m` is a byte-for-byte copy of the user-supplied `Vortex Ldos copy.m` (SHA-256 `a5c27b03f1d6ea45677a2d47d808d641a5c17e633a25a0965be2ac6adf6ae635`). The new `scripts/vortex_ldos.wl` is an adaptation, not an original historical source. Notebook metadata records exact character ranges of its 11 displayed sections. `tools/ldos_notebook_sections.py` generates the accompanying prose.
+`original_code/vortex_ldos_original.m` is a byte-for-byte copy of the user-supplied `Vortex Ldos copy.m` (SHA-256 `a5c27b03f1d6ea45677a2d47d808d641a5c17e633a25a0965be2ac6adf6ae635`). Notebook metadata records each excerpt's exact character range and original line numbers. `tools/ldos_notebook_sections.py` places those excerpts beside explanations of their existing expressions.
 
-The adaptation sources are the supplied LDOS script (phase averaging and spectral broadening), `original_code/added_vortex.wl` input 5 (occupation, pairing, density feedback and vortex envelope), and the saved diagram metadata/captions (case strengths, lattice sizes and identified observation sites). `LDOS_WORKFLOW.md` lists changes, assumptions and unverified settings. Original files and archived plot pixels remain unchanged.
+Notebook 05 also quotes the original impurity assignments, the active vortex update in `added vortex.nb` and a spectrum command. It does not substitute different matrix blocks, spectral weights, phase formulas or plotting routines. The reconstructed implementation introduced in commit `800519e` has been removed from the current tree in response to the user's correction.

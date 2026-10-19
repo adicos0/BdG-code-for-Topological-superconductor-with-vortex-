@@ -245,9 +245,27 @@ save('04_vortex_profile_and_spectrum.ipynb',cells)
 cells = intro('05','Impurity code and LDOS diagrams',
               'This notebook explains the impurity-related code that is present and gives a direct reading of each saved plot: its axes, curves, colours and visible changes.')
 cells[1:] = []
-cells[0] = md('# 05. Impurities, LDOS and vortex-core views\n\nExplain the supplied LDOS program, its corrected adaptation, and the saved diagrams. Original and adapted code are labelled separately.')
+cells[0] = md('# 05. Impurities, LDOS and vortex-core views\n\nRead the original LDOS code section by section, followed by the saved diagrams. Every displayed code block is copied from a supplied source file.')
 cells += ldos_sections()
-cells += [md('## Saved energy-axis LDOS diagrams\n\nThe following are archived outputs. Their original energy labels and scales are retained; the adapted workflow has not been run to reproduce these numerical curves.'),
+cells += [md('''## 13. What the original files contain about impurities
+
+In `BdG topological.nb`, `Vimp=0` is assigned, but the displayed `+imp` contribution is commented out. The displayed active spin-block assignments therefore do not run a non-magnetic or magnetic impurity sweep. The LDOS file loads saved matrices rather than adding those impurity terms itself. The missing sweep code is not reconstructed here.'''),
+          excerpt('bdg_topological',1,'Original impurity parameter',start='Vimp = 0;',end='empty='),
+          excerpt('bdg_topological',5,'Original spin-block assignments',start='  Huu =',end='    Huv='),
+          md('''## 14. The vortex update present in added vortex.nb
+
+This is the actual vortex-related block in `added vortex.nb`. It sets `vsite=378`, `l=0.3` and `zetanot=l/Pi`. It calculates `phi` using the displayed absolute coordinate differences, forms the eigenvector-product sum, multiplies by `vs`, and multiplies by the `Tanh` and `Exp[I*phi]` factors to form `stcalc`.
+
+`xpos` and `ypos` refer to the coordinate arrays built earlier in that file. Its initial lattice assignments are `Nx=28` and `Ny=28`; these settings must not be silently replaced by the settings printed on a different saved image.
+
+The `Tanh` argument uses the distance from the selected site. `Exp[I*phi]` multiplies the result by a complex phase. The expressions below are left exactly as supplied, including the absolute-value angle formula. This is a field-update block; it contains no heatmap or surface-plot command. The provided files do not establish the exact commands that produced the saved two-dimensional and three-dimensional core views.'''),
+          excerpt('added_vortex',5,'Original vortex contribution to stcalc',start='vsite = 378;',end='  (*Print['),
+          md('''## 15. The original spectrum plotting command
+
+This command plots `Sort[ES[[1]]]`, the sorted eigenvalues. The title, range and reference lines are specified explicitly. It is copied from the original file; those settings do not demonstrate that this command produced every archived spectrum shown below.'''),
+          excerpt('bdg_topological',7,'Original spectrum plot')]
+
+cells += [md('## Saved energy-axis LDOS diagrams\n\nThe following are archived outputs. Their original energy labels and scales are retained; the exact generating run for each image has not been verified from the supplied files.'),
           figure('ldos_central_peak','LDOS with a narrow central peak',
                  'The blue curve has a large peak close to zero energy, with many smaller oscillations on either side. The curve remains appreciable through the central region. The small oscillations are features of the saved curve; the image alone does not establish their numerical origin.'),
           figure('ldos_gap','LDOS suppressed between two sharp peaks',
@@ -261,7 +279,7 @@ The three panels below plot pairing amplitude against position. Their horizontal
                  'All three orange curves approach zero near the central coordinate. From left to right, the neighbouring region becomes more uneven, while values far from the centre stay around the same general level. The panel scales are slightly different: the rightmost vertical scale reaches about 0.08, whereas the first two reach about 0.07. The colours identify the plotted line, not three distinct observables.'),
           md('''## Saved impurity LDOS curves
 
-The next six saved images label the horizontal axis **Number of Sites**. That is the archived label. The supplied LDOS program shows how an energy-sample index can appear on this axis; the exact generating command for each saved image remains unverified. The curves use green for the impurity-site result, blue for a nearby-site result and orange for a farther-site result. The adapted code uses explicit energy values and site identifiers for new curves, resolving the ambiguity going forward.
+The next six saved images label the horizontal axis **Number of Sites**. That is the archived label. The exact generating command for these three-colour curves is not supplied. The active final command above selects column 184 and contains one active curve; it is not evidence for the site identities of the green, blue and orange curves in these images.
 
 The panels are grouped by their stored scalar/nonmagnetic or magnetic case. The descriptions below state what is visible; they do not assume that changes in peak height prove protection or identify a particular bound state.'''),
           figure('ldos_scalar_weak','Scalar case: green curve above the other two',
@@ -278,7 +296,7 @@ The panels are grouped by their stored scalar/nonmagnetic or magnetic case. The 
                  'The green result stays close to the baseline. The remaining two traces still have a broad central minimum, with blue generally above orange. The vertical scale differs from other panels, so identical apparent heights on screen need not represent identical values.'),
           md('''## Saved impurity spectra
 
-In each spectrum below, horizontal n is the index in a sorted energy list. Blue dots are eigenvalues. Green dashed lines are selected energy references; the saved plotting code sets their positions explicitly.'''),
+In each spectrum below, horizontal n is the index in a sorted energy list. Blue dots are eigenvalues. Green dashed lines mark the reference values drawn in each image. The original spectrum command above also specifies reference lines, but its settings are not verified as the settings for every image.'''),
           figure('spectrum_scalar_a','Scalar spectrum: levels inside the reference interval',
                  'Several blue dots lie between the green lines around zero. More distant levels occur above and below that interval. This plot shows energies, not the locations of their wavefunctions.'),
           figure('spectrum_magnetic_a','Magnetic spectrum: small positive and negative levels',
