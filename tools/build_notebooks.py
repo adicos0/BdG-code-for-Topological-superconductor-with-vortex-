@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import nbformat as nbf
+from ldos_notebook_sections import sections as ldos_sections
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-'
@@ -243,32 +244,24 @@ save('04_vortex_profile_and_spectrum.ipynb',cells)
 
 cells = intro('05','Impurity code and LDOS diagrams',
               'This notebook explains the impurity-related code that is present and gives a direct reading of each saved plot: its axes, curves, colours and visible changes.')
-cells += [md('''## 1. What the impurity code actually executes
-
-`Vimp=0` assigns a scalar variable. The saved active matrix expressions do not reference that variable. In `Huu`, the text `+imp` is inside `(* ... *)`, so it is ignored. `Hdd` contains no active impurity term either.
-
-Consequently, these excerpts do not execute an impurity scan. The saved file also does not contain an active LDOS routine for the curves below. We can explain the existing code and read the saved diagrams, but there is no demonstrated cell-to-plot execution chain for those curves.'''),
-          excerpt('bdg_topological',1,'Impurity parameter',start='Vimp = 0;',end='empty='),
-          excerpt('bdg_topological',5,'Active spin blocks and the disabled impurity term',start='  Huu =',end='    Huv='),
-          md('''## 2. Read LDOS plotted against energy
-
-LDOS means local density of states: how strongly electronic states contribute near a selected position at a given energy. A peak indicates more local spectral weight at that energy; a dip indicates less. Its height is not a count of lattice sites.
-
-The next three plots explicitly use **Energy (meV)** on the horizontal axis and LDOS on the vertical axis. Their scales differ, so compare their axes before comparing peak heights.'''),
+cells[1:] = []
+cells[0] = md('# 05. Impurities, LDOS and vortex-core views\n\nExplain the supplied LDOS program, its corrected adaptation, and the saved diagrams. Original and adapted code are labelled separately.')
+cells += ldos_sections()
+cells += [md('## Saved energy-axis LDOS diagrams\n\nThe following are archived outputs. Their original energy labels and scales are retained; the adapted workflow has not been run to reproduce these numerical curves.'),
           figure('ldos_central_peak','LDOS with a narrow central peak',
                  'The blue curve has a large peak close to zero energy, with many smaller oscillations on either side. The curve remains appreciable through the central region. The small oscillations are features of the saved curve; the image alone does not establish their numerical origin.'),
           figure('ldos_gap','LDOS suppressed between two sharp peaks',
                  'Red dotted reference lines lie at approximately -0.06 and +0.06 meV. Between them, the LDOS is close to zero; near either line it rises sharply. The two sides are not identical in height and background. These plotted values should be read directly rather than assumed symmetric.'),
           figure('ldos_two_inner_peaks','Two peaks inside the marked energy interval',
                  'The red dotted lines mark approximately ±0.05 meV. Two broad maxima appear inside that interval, with a smaller but nonzero LDOS near zero energy. A central dip and two finite-energy peaks are different from a zero-energy peak.'),
-          md('''## 3. Read the pairing line profiles
+          md('''## Saved pairing line profiles
 
 The three panels below plot pairing amplitude against position. Their horizontal coordinate is spatial, unlike the energy axes immediately above.'''),
           figure('pairing_profiles_impurity','Three spatial profiles with different local distortion',
                  'All three orange curves approach zero near the central coordinate. From left to right, the neighbouring region becomes more uneven, while values far from the centre stay around the same general level. The panel scales are slightly different: the rightmost vertical scale reaches about 0.08, whereas the first two reach about 0.07. The colours identify the plotted line, not three distinct observables.'),
-          md('''## 4. Read the site-index LDOS curves
+          md('''## Saved impurity LDOS curves
 
-The next six saved images label the horizontal axis **Number of Sites**. Read it as the displayed index axis, not as energy. The curves use green for the impurity-site result, blue for a nearby-site result and orange for a farther-site result. The missing plotting routine prevents a more precise reconstruction of how this sampling axis was generated.
+The next six saved images label the horizontal axis **Number of Sites**. That is the archived label. The supplied LDOS program shows how an energy-sample index can appear on this axis; the exact generating command for each saved image remains unverified. The curves use green for the impurity-site result, blue for a nearby-site result and orange for a farther-site result. The adapted code uses explicit energy values and site identifiers for new curves, resolving the ambiguity going forward.
 
 The panels are grouped by their stored scalar/nonmagnetic or magnetic case. The descriptions below state what is visible; they do not assume that changes in peak height prove protection or identify a particular bound state.'''),
           figure('ldos_scalar_weak','Scalar case: green curve above the other two',
@@ -283,7 +276,7 @@ The panels are grouped by their stored scalar/nonmagnetic or magnetic case. The 
                  'The green curve is low across the plotted range. Blue and orange show pronounced shoulders surrounding the central trough. The blue shoulders are taller, but the two outer traces remain similar in some regions.'),
           figure('ldos_magnetic_strong','Magnetic case: green trace near zero',
                  'The green result stays close to the baseline. The remaining two traces still have a broad central minimum, with blue generally above orange. The vertical scale differs from other panels, so identical apparent heights on screen need not represent identical values.'),
-          md('''## 5. Read the impurity spectra
+          md('''## Saved impurity spectra
 
 In each spectrum below, horizontal n is the index in a sorted energy list. Blue dots are eigenvalues. Green dashed lines are selected energy references; the saved plotting code sets their positions explicitly.'''),
           figure('spectrum_scalar_a','Scalar spectrum: levels inside the reference interval',
@@ -294,7 +287,7 @@ In each spectrum below, horizontal n is the index in a sorted energy list. Blue 
                  'A dot lies close to zero and other levels lie near the reference boundaries. The title records the parameters attached to this saved plot. A near-zero energy alone does not establish the state’s spatial distribution or physical identity.'),
           figure('spectrum_magnetic_b','Magnetic spectrum with a near-zero level',
                  'The same types of features are visible: a central near-zero level, nearby levels and an outer sequence of states. The broad resemblance to another spectrum does not establish equality of the underlying matrices or wavefunctions.'),
-          md('''## 6. Read the spatial maps and surfaces
+          md('''## Saved spatial maps and surfaces
 
 Colour maps place one cell at each lattice coordinate. The surface diagrams also show a vertical numerical axis. Several of these surfaces have **zero at the top of the vertical axis and larger positive values lower down**. An apparent upward spike can therefore correspond to a smaller value; read the ticks before describing it as an enhancement.'''),
           figure('pairing_map_scalar_weak','Scalar case: a distinct central cell',

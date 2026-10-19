@@ -1,24 +1,32 @@
-# Validation of the code-and-diagram guides
+# Validation of code, explanations and diagrams
 
 Validation date: 19 October 2026.
 
-## Content checks
+## Completed checks
 
-- All five notebooks pass `nbformat.validate`.
-- Every displayed Mathematica block matches its recorded contiguous range in the original decoded input cell.
-- The two complete source transcriptions still match the original `.nb` input cells and raw `BoxData`.
-- Original `.nb` and `.wdx` file hashes are unchanged.
-- All 30 diagram regions are included in the notebooks. Their pixel arrays are identical to their recorded rectangles in the archived source PNGs.
-- Diagram regions retain the plotted axes, tick labels, curves, colours, original plot titles and mesh details. Surrounding document text and page numbers are excluded.
-- Notebook text contains no document comparisons, chapter references, original-document links or full-page-image references.
-- All notebook cells are reading material; no synthetic execution output is supplied.
+- All five reading notebooks pass `nbformat.validate`.
+- The 16 retained original excerpts match their recorded input-cell character ranges.
+- All 11 adapted Mathematica sections in notebook 05 match `scripts/vortex_ldos.wl` exactly.
+- The uploaded LDOS script is preserved byte for byte (SHA-256 in `SOURCE_MAP.md`).
+- Original `.nb`, `.wdx`, decoded source and archived image hashes are unchanged.
+- All 30 original diagrams remain represented; displayed crops retain the exact source pixels.
+- The notebook text contains no full-page scans or document-comparison narrative.
+- Independent NumPy checks pass for an analytically known isolated-site LDOS, Hermiticity, opposite-momentum particle-hole symmetry, eigensystem residuals, complete spectral weights, the integrated-LDOS sum rule and full phase winding.
+- Adapted Wolfram sources have balanced brackets, nested comments and strings. This is a lexical check, not a Mathematica compilation.
 
-The extraction contact sheet was visually reviewed to check that captions and surrounding text were removed and plot labels were retained. Explanations distinguish sorted-state index, spatial position and energy axes; note missing colour scales; and describe the reversed height scales of the relevant surfaces.
+## Checks available but not run
 
-## Reproduce the checks
+No Mathematica or Wolfram runtime is installed in the editing environment. `tests/ldos_checks.wlt` is provided for `TestReport` in Wolfram. Import of the actual WDX dataset, full adapted-program execution, convergence of relaxed 20 × 20 cases and numerical reproduction of archived figures are **unverified**. No synthetic or unexecuted result is presented as an original plot.
+
+The program performs matrix dimension/layout and Hermiticity checks at runtime. It refuses unconfirmed impurity baselines and unconverged relaxation through its high-level entry point. These guards do not replace numerical validation of a scientific calculation.
+
+## Reproduce completed checks
 
 ```bash
+python -m pip install -r requirements.txt
+python tools/build_notebooks.py
 python tools/verify_sources.py
+python tests/check_ldos_algebra.py
 ```
 
-This is a provenance and presentation check. Mathematica was not rerun, no matrix entries were changed, and no numerical curves were regenerated. The archived diagram inputs are not all present as active plotting routines in the saved programs; the guides say so beside the relevant code.
+The Wolfram suite can be run separately with `TestReport["/absolute/path/to/repo/tests/ldos_checks.wlt"]`.

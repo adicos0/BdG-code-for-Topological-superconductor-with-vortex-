@@ -29,8 +29,14 @@ The extracted regions exclude captions, equations, surrounding paragraphs and pa
 ## Scope of the explanations
 
 - Matrix sizes, offsets, iteration order and signs are explained from the active source expressions.
-- A commented term is described as inactive. Missing LDOS and impurity plotting routines are not replaced with invented code.
-- Diagram explanations identify the actual displayed axes. The site-index LDOS panels are not relabelled as energy plots.
+- A commented term is described as inactive. The newly supplied LDOS program is preserved separately; adaptations and reconstructed plotting routines are explicitly labelled.
+- Archived diagram labels are retained. The supplied LDOS script reveals that its final horizontal index runs over energy samples, so notebook 05 explains the ambiguity without claiming that every historical image came from that command.
 - Heatmaps without a colour bar are not assigned numerical colour values.
 - The reversed vertical scales in several surfaces are explained explicitly; visual upward direction is not treated as numerical increase.
 - Energy levels near zero are described as energy observations, without assigning an unsupported physical identity.
+
+## Supplied LDOS file and adaptations
+
+`original_code/vortex_ldos_original.m` is a byte-for-byte copy of the user-supplied `Vortex Ldos copy.m` (SHA-256 `a5c27b03f1d6ea45677a2d47d808d641a5c17e633a25a0965be2ac6adf6ae635`). The new `scripts/vortex_ldos.wl` is an adaptation, not an original historical source. Notebook metadata records exact character ranges of its 11 displayed sections. `tools/ldos_notebook_sections.py` generates the accompanying prose.
+
+The adaptation sources are the supplied LDOS script (phase averaging and spectral broadening), `original_code/added_vortex.wl` input 5 (occupation, pairing, density feedback and vortex envelope), and the saved diagram metadata/captions (case strengths, lattice sizes and identified observation sites). `LDOS_WORKFLOW.md` lists changes, assumptions and unverified settings. Original files and archived plot pixels remain unchanged.
