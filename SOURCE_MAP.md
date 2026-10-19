@@ -1,50 +1,36 @@
-# Original-source map
+# Code and diagram provenance
 
-## Authoritative sources
+This file records implementation provenance for maintainers. The notebooks themselves explain the code and diagrams directly.
 
-- **Thesis:** Aditya Banerjee, *Understanding the Magnetic Vortex State in Topological Superconductors*, MSc Applied Physics, 2023. [Original PDF](https://drive.google.com/file/d/1d9WheYwEY23cPAlLxxVOUfQDr9jLdqb9/view).
-- **Original code:** [`BdG topological.nb`](https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-/blob/d88d12cded1a954d53c2d36d515525c8100ded1c/BdG%20topological.nb) and [`added vortex.nb`](https://github.com/adicos0/BdG-code-for-Topological-superconductor-with-vortex-/blob/d88d12cded1a954d53c2d36d515525c8100ded1c/added%20vortex.nb), pinned to original repository commit `d88d12cded1a954d53c2d36d515525c8100ded1c`.
+## Code
 
-No external derivation, newly chosen model, Python solver or newly computed plot is used in this edition. The notebook text provides navigation and source-status notes. Equations, derivation steps, figure labels and explanatory passages are preserved through full-page thesis images.
+The authoritative calculation files are `BdG topological.nb` and `added vortex.nb`, unchanged from commit `d88d12cded1a954d53c2d36d515525c8100ded1c`. Original Wolfram data files are also unchanged.
 
-## Thesis pages
-
-The PDF has 14 pages before printed page 1. Thus printed page 46 is PDF viewer page 60. The following complete pages are rendered at 120 dpi without cropping, recolouring or redrawing:
-
-| Reading notebook | Printed pages | Material |
-| --- | --- | --- |
-| 01 | 17–20, 45–46 | Tight-binding derivation (§2.7), Figure 2.1, and topological Hamiltonian Eqs. (4.8)–(4.13). |
-| 02 | 30–31, 46–47 | Mean-field/BdG construction, spin matrix and original spectrum Figure 4.20. |
-| 03 | 31–33 | Original self-consistency equations, LDOS expression and calculation discussion. |
-| 04 | 34–39, 47–48 | Original vortex expression, Eqs. (4.2)–(4.5), conventional vortex figures and Figures 4.20–4.22. |
-| 05 | 32, 39–46, 49–52 | Original LDOS/impurity definitions, conventional impurity figures and topological impurity Figures 4.23–4.29. |
-
-Across the notebooks this includes all Chapter 4 figure pages, with the original captions. Some pages appear in more than one notebook so the associated equation is available where needed. [reference_pages/manifest.json](reference_pages/manifest.json) records the PDF hash, printed/PDF page mapping and SHA-256 hash of each of the 27 PNG files.
-
-## Original code cells
-
-The input numbering below counts nonempty `Code`/`Input` calculation cells. It excludes empty cells and the final empty drawing canvas. Source line numbers refer to the text of the pinned `.nb` files.
-
-| Input | BdG topological.nb line | added vortex.nb line | Original content |
+| Input cell | BdG topological.nb line | added vortex.nb line | Content |
 | --- | ---: | ---: | --- |
-| 1 | 23 | 23 | Parameters, hopping dictionaries, 20 × 20 lattice, site indices, periodic matrices and `Hop1x`. |
+| 1 | 23 | 23 | Parameters, hopping dictionaries, 20 × 20 lattice, periodic matrices and `Hop1x`. |
 | 2 | 922 | 948 | Onsite pairing construction `SCs`. |
-| 3 | 1049 | 1075 | Fermi function, coupling, density target and pairing initialization. |
-| 4 | 1398 | 1437 | Commented alternative BdG construction. |
-| 5 | 1441 | 1480 | Complete active 100-step iteration, observables, commented vortex prototype and exports. |
-| 6 | 4032 | 45843 | Original sorting input. |
-| 7 | 4073 | 45884 | Original `ListPlot`, including its original plot label, range and grid lines. |
+| 3 | 1049 | 1075 | Occupation function, coupling, target density and initialization. |
+| 4 | 1398 | 1437 | Commented alternative matrix construction. |
+| 5 | 1441 | 1480 | Matrix assembly, eigensystem, occupations, pairing update, commented vortex block and exports. |
+| 6 | 4032 | 45843 | Original sorting expression. |
+| 7 | 4073 | 45884 | Original spectrum plotting command. |
 
-All seven cells from each source are stored in `original_code/*.wl`. The paired JSON files preserve their original `BoxData`, decoded text, original line number and hash. Each notebook code block is an exact contiguous excerpt of that decoded text; metadata records its source cell and character offsets. The extractor flattens `RowBox` string lists and decodes the outer notebook string representation, including escaped line continuations. It does not evaluate or translate Wolfram expressions. Named Wolfram characters and embedded plot-label formatting are retained.
+The `.wl` transcriptions preserve the original expressions. The paired JSON files retain raw `BoxData`, line locations and decoded text. Notebook metadata records the exact source cell and character range of each displayed code block. New explanatory prose describes the operations in those blocks; it does not change their expressions or parameters.
 
-## Preserved source differences and missing workflows
+## Diagram extraction
 
-- Original `Nx=20`, `Ny=20`, `iter=100`, coupling and density targets are retained. No small-lattice substitute is used.
-- `BdG topological.nb` and `added vortex.nb` keep their separate parameter values and plot labels. Labels in saved plotting cells are not assumed to match all current initialization values.
-- The hopping dictionary differs from the printed thesis Hamiltonian. The unused `Hop1x` definition also differs from the active loop. Both originals are preserved.
-- The vortex prototype stays inside its original comment delimiters. Its original arctangent and length expression are not replaced or activated.
-- `Vimp=0` and the commented `+imp` term are shown as found. No active impurity sweep or active routine producing all thesis LDOS plots was found in these input cells.
-- The original `.nb` files contain saved Mathematica graphics. They remain available in the original files; the notebook figure pages come from the thesis PDF, rather than a recreation of those graphics.
-- Original equations and interpretations are shown as printed, including unresolved convention issues. Their reproduction is not a claim of independent mathematical or experimental verification.
+`diagrams/manifest.json` records the source PNG, rectangle and SHA-256 hash for each of the 30 diagrams. Rectangles use pixel coordinates `(left, top, right, bottom)` in the archived page render. `tools/extract_diagrams.py` copies those regions without resampling, filtering, recolouring, adding labels or regenerating numerical data.
 
-The source-only revision supersedes the previous tutorial with new Python models, diagnostic examples and generated curves. That earlier version is retained only in Git history.
+The existing `reference_pages/` directory is retained only as an internal source-asset archive for reproducible extraction. Its manifest records the original document identity, file hash and page mapping. These pages are not displayed or linked in the reading notebooks. The notebook image URLs point only to `diagrams/`.
+
+The extracted regions exclude captions, equations, surrounding paragraphs and page numbers. Original plot-internal labels, tick marks and titles remain. All previously displayed numerical figures are represented among the extracted regions, together with the lattice diagram.
+
+## Scope of the explanations
+
+- Matrix sizes, offsets, iteration order and signs are explained from the active source expressions.
+- A commented term is described as inactive. Missing LDOS and impurity plotting routines are not replaced with invented code.
+- Diagram explanations identify the actual displayed axes. The site-index LDOS panels are not relabelled as energy plots.
+- Heatmaps without a colour bar are not assigned numerical colour values.
+- The reversed vertical scales in several surfaces are explained explicitly; visual upward direction is not treated as numerical increase.
+- Energy levels near zero are described as energy observations, without assigning an unsupported physical identity.

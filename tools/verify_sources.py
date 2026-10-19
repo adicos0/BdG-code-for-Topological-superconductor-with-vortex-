@@ -1,9 +1,10 @@
-"""Verify provenance of the source-only notebook edition without running Wolfram."""
+"""Verify code excerpts and unchanged diagram pixels without running Wolfram."""
 from pathlib import Path
 import hashlib
 import json
 import re
 import nbformat
+from PIL import Image
 from extract_original_code import extract
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,7 +28,16 @@ def main():
         assert (ROOT/'original_code'/f'{stem}.wl').read_text() == text
     for page in manifest['pages']:
         assert sha256(ROOT/page['path']) == page['sha256'], page['path']
-    code_count, page_count = 0, 0
+    diagrams = json.loads((ROOT/'diagrams/manifest.json').read_text())
+    for diagram in diagrams:
+        assert sha256(ROOT/diagram['path']) == diagram['sha256']
+        with Image.open(ROOT/diagram['source']) as source, Image.open(ROOT/diagram['path']) as shown:
+            expected = source.crop(diagram['rectangle'])
+            assert shown.size == expected.size
+            assert shown.mode == expected.mode
+            assert shown.tobytes() == expected.tobytes(), diagram['path']
+    code_count, diagram_count = 0, 0
+    used_diagrams = set()
     for path in sorted((ROOT/'notebooks').glob('*.ipynb')):
         notebook = nbformat.read(path, as_version=4)
         nbformat.validate(notebook)
@@ -40,16 +50,18 @@ def main():
                 actual = cell.source.split('```mathematica\n', 1)[1].rsplit('\n```', 1)[0]
                 assert actual == expected, f'Code changed: {path.name}'
                 code_count += 1
-            if 'thesis_source' in cell.metadata:
-                info = cell.metadata['thesis_source']
-                assert info['pdf_page'] == info['printed_page']+14
-                assert (ROOT/info['asset']).is_file(), info['asset']
-                page_count += 1
-            for referenced in re.findall(r'/reference_pages/(thesis_p\d+\.png)', cell.source):
-                assert (ROOT/'reference_pages'/referenced).is_file()
+            assert not re.search(r'thesis|chapter|reference_pages|drive.google', cell.source, re.I), path.name
+            if 'diagram' in cell.metadata:
+                asset = cell.metadata['diagram']['asset']
+                assert (ROOT/asset).is_file(), asset
+                used_diagrams.add(asset)
+                diagram_count += 1
+            for referenced in re.findall(r'/diagrams/([a-z_]+\.png)', cell.source):
+                assert (ROOT/'diagrams'/referenced).is_file()
         print('PASS', path.name)
-    print(f'{code_count} exact code excerpts; {page_count} page placements; {len(manifest["pages"])} unique page images.')
-    print('Original .nb/.wdx hashes, BoxData transcription and notebook schema verified.')
+    assert used_diagrams == {d['path'] for d in diagrams}
+    print(f'{code_count} exact code excerpts; {diagram_count} diagrams with pixel-identical source regions.')
+    print('No document comparisons or page scans in notebook text. Original .nb/.wdx hashes unchanged.')
 
 
 if __name__ == '__main__':

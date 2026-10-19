@@ -1,0 +1,332 @@
+[
+  {
+    "path": "diagrams/lattice_connections.png",
+    "source": "reference_pages/thesis_p019.png",
+    "rectangle": [
+      195,
+      110,
+      825,
+      600
+    ],
+    "sha256": "ccac27774a916c7b8fc4889f475d3e14ac07d064bd93a1a63b11bd3c0d1479b7"
+  },
+  {
+    "path": "diagrams/spectrum_zero_pairing.png",
+    "source": "reference_pages/thesis_p032.png",
+    "rectangle": [
+      190,
+      115,
+      835,
+      562
+    ],
+    "sha256": "057ba544d0cf285c08944e39c38b13dfc74dad1769fe366d95dbccb901bdf27f"
+  },
+  {
+    "path": "diagrams/ldos_central_peak.png",
+    "source": "reference_pages/thesis_p033.png",
+    "rectangle": [
+      150,
+      345,
+      875,
+      815
+    ],
+    "sha256": "33bac7aa37390c08c09d914fec7ff0917be1d3a0995d2e0c095201df186e9872"
+  },
+  {
+    "path": "diagrams/spectrum_gap.png",
+    "source": "reference_pages/thesis_p034.png",
+    "rectangle": [
+      150,
+      195,
+      875,
+      695
+    ],
+    "sha256": "eb35ee6a534df8a3b868bd6fd30383a56e55140d024182d46ce37bc790ab0e90"
+  },
+  {
+    "path": "diagrams/ldos_gap.png",
+    "source": "reference_pages/thesis_p035.png",
+    "rectangle": [
+      150,
+      110,
+      875,
+      575
+    ],
+    "sha256": "f2313f36834e84867fc853d32b729d862f450785f37c9fc50d0385caf8a15d97"
+  },
+  {
+    "path": "diagrams/spectrum_in_gap.png",
+    "source": "reference_pages/thesis_p036.png",
+    "rectangle": [
+      155,
+      390,
+      875,
+      889
+    ],
+    "sha256": "844e212660db1c40d28e269f2765b1dc02ecb1b4abc8a78758bfabaac67caef4"
+  },
+  {
+    "path": "diagrams/pairing_line_profile.png",
+    "source": "reference_pages/thesis_p037.png",
+    "rectangle": [
+      155,
+      190,
+      875,
+      650
+    ],
+    "sha256": "f7aae8198c9e3b5ce4d74fcd03fcf4bfc14ab761bc9451846a7e2af8120abf08"
+  },
+  {
+    "path": "diagrams/pairing_map_smooth.png",
+    "source": "reference_pages/thesis_p038.png",
+    "rectangle": [
+      230,
+      110,
+      800,
+      675
+    ],
+    "sha256": "a578343cc751fed95d76d509069d96f986a5c6268fb0fc22f96ea64a87e522bb"
+  },
+  {
+    "path": "diagrams/pairing_surface_smooth.png",
+    "source": "reference_pages/thesis_p038.png",
+    "rectangle": [
+      240,
+      790,
+      785,
+      1080
+    ],
+    "sha256": "852531838ecccb8750d358775a9ba9634e84a8c11a0f84dbbbc578d85555b009"
+  },
+  {
+    "path": "diagrams/ldos_two_inner_peaks.png",
+    "source": "reference_pages/thesis_p039.png",
+    "rectangle": [
+      190,
+      110,
+      830,
+      525
+    ],
+    "sha256": "c95ddb2f4e5fd1f2eea7d23bfc643db757342fa3e097a81b5554191691126fd6"
+  },
+  {
+    "path": "diagrams/pairing_profiles_impurity.png",
+    "source": "reference_pages/thesis_p040.png",
+    "rectangle": [
+      120,
+      278,
+      900,
+      476
+    ],
+    "sha256": "3fb413362edd27e813816f253860a76bb2933992be31c783678fd9e1fdcb4bfc"
+  },
+  {
+    "path": "diagrams/spectrum_scalar_a.png",
+    "source": "reference_pages/thesis_p041.png",
+    "rectangle": [
+      195,
+      115,
+      835,
+      560
+    ],
+    "sha256": "3f0f46f4fc18a64eb07be12dc907872b1aa588092fe1c2e62da9400c87036118"
+  },
+  {
+    "path": "diagrams/ldos_scalar_weak.png",
+    "source": "reference_pages/thesis_p041.png",
+    "rectangle": [
+      270,
+      645,
+      755,
+      963
+    ],
+    "sha256": "f14ccfc2d10bd2622ee621f9885fdbbe9d5b0994490c41bca3670c041f97d7f2"
+  },
+  {
+    "path": "diagrams/ldos_scalar_strong.png",
+    "source": "reference_pages/thesis_p042.png",
+    "rectangle": [
+      270,
+      110,
+      755,
+      425
+    ],
+    "sha256": "946624cb6302ba1cbfcea11cc322cef132c07ae5df6563254c4be73620f7a87d"
+  },
+  {
+    "path": "diagrams/ldos_scalar_middle.png",
+    "source": "reference_pages/thesis_p042.png",
+    "rectangle": [
+      235,
+      575,
+      795,
+      935
+    ],
+    "sha256": "5a48d5425fc9522714aaae7e2172c3b6762fcabe06c46028bf84a71e96ad3907"
+  },
+  {
+    "path": "diagrams/pairing_surface_scalar_a.png",
+    "source": "reference_pages/thesis_p043.png",
+    "rectangle": [
+      190,
+      110,
+      835,
+      567
+    ],
+    "sha256": "ee085633487a96cf9029b90f63bf63abfd6fbdce25cfb4e380fc1ec16107bd74"
+  },
+  {
+    "path": "diagrams/spectrum_magnetic_a.png",
+    "source": "reference_pages/thesis_p043.png",
+    "rectangle": [
+      235,
+      660,
+      790,
+      1045
+    ],
+    "sha256": "26abb61725c839e93705e97be953e865546c44019eec177fccd05fda50221204"
+  },
+  {
+    "path": "diagrams/ldos_magnetic_weak.png",
+    "source": "reference_pages/thesis_p044.png",
+    "rectangle": [
+      270,
+      110,
+      755,
+      430
+    ],
+    "sha256": "71a080eaa57d866957a50c7d335fb17144bcd6db6da47dcea21f584226e661fc"
+  },
+  {
+    "path": "diagrams/ldos_magnetic_middle.png",
+    "source": "reference_pages/thesis_p044.png",
+    "rectangle": [
+      230,
+      580,
+      795,
+      1000
+    ],
+    "sha256": "ed6840ef5ecba36fd22284e528dbe5454ed7a49606366f2b232819bcf63c8d59"
+  },
+  {
+    "path": "diagrams/ldos_magnetic_strong.png",
+    "source": "reference_pages/thesis_p045.png",
+    "rectangle": [
+      270,
+      110,
+      755,
+      400
+    ],
+    "sha256": "732240e9d2d9c33334c44559b29217b85d78574e78f2530823368d961efa4060"
+  },
+  {
+    "path": "diagrams/spectrum_central_state.png",
+    "source": "reference_pages/thesis_p047.png",
+    "rectangle": [
+      235,
+      115,
+      795,
+      507
+    ],
+    "sha256": "41e495f64bdb060f752e4bda1ac5656706631b51aaea4e991a4a3594ab48ef1d"
+  },
+  {
+    "path": "diagrams/pairing_map_structured.png",
+    "source": "reference_pages/thesis_p048.png",
+    "rectangle": [
+      270,
+      112,
+      750,
+      598
+    ],
+    "sha256": "ab76c221446f489160d3ea4cac1c1130cea8108ba6e5c0680f028bbfaa527c0c"
+  },
+  {
+    "path": "diagrams/pairing_surface_structured.png",
+    "source": "reference_pages/thesis_p048.png",
+    "rectangle": [
+      240,
+      710,
+      785,
+      986
+    ],
+    "sha256": "e08ee3f1af29695c7f156ecb84f3a5352c2e0fc70f28d47368ac49e4e71882fd"
+  },
+  {
+    "path": "diagrams/spectrum_scalar_b.png",
+    "source": "reference_pages/thesis_p049.png",
+    "rectangle": [
+      235,
+      115,
+      795,
+      507
+    ],
+    "sha256": "59aa2a40600e03c831176b47613a08d9c9d168fe8e6c97454c07b5eff966f502"
+  },
+  {
+    "path": "diagrams/pairing_map_scalar_weak.png",
+    "source": "reference_pages/thesis_p049.png",
+    "rectangle": [
+      350,
+      590,
+      675,
+      920
+    ],
+    "sha256": "cf122c4fa7f880eb5595b1d7976395113b8b3f908c50af42fd358df83e7d625e"
+  },
+  {
+    "path": "diagrams/pairing_map_scalar_strong.png",
+    "source": "reference_pages/thesis_p050.png",
+    "rectangle": [
+      350,
+      112,
+      675,
+      440
+    ],
+    "sha256": "897fae2ad1a0b0125d9481391144001eca0d57c740a775027bc6f18ab5721589"
+  },
+  {
+    "path": "diagrams/pairing_surface_scalar_b.png",
+    "source": "reference_pages/thesis_p050.png",
+    "rectangle": [
+      305,
+      585,
+      715,
+      852
+    ],
+    "sha256": "908f47d4f245217dd2c566a66d25f355f73b3624adaad089bc110f18757f42dd"
+  },
+  {
+    "path": "diagrams/spectrum_magnetic_b.png",
+    "source": "reference_pages/thesis_p051.png",
+    "rectangle": [
+      195,
+      125,
+      835,
+      565
+    ],
+    "sha256": "abe303b5d0d4c83a8dd271eb4c52368592449a895500e526fe22b1d174e2c27b"
+  },
+  {
+    "path": "diagrams/pairing_surface_magnetic.png",
+    "source": "reference_pages/thesis_p051.png",
+    "rectangle": [
+      185,
+      690,
+      840,
+      1110
+    ],
+    "sha256": "a7e4ec803ff382afec41c06a9b7f28e6d986d026c2bb87a214aec5f15ab41d74"
+  },
+  {
+    "path": "diagrams/pairing_map_magnetic.png",
+    "source": "reference_pages/thesis_p052.png",
+    "rectangle": [
+      350,
+      425,
+      675,
+      753
+    ],
+    "sha256": "1e99ecca96f8479ec2a24521ba4378e558314ad3f2a1af8b5d5120f634ebdef9"
+  }
+]

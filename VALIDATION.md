@@ -1,30 +1,24 @@
-# Provenance validation — source-only edition
+# Validation of the code-and-diagram guides
 
-Checked on 19 October 2026. This edition validates preservation of the supplied source material. It does not claim that the Mathematica calculations were rerun.
+Validation date: 19 October 2026.
 
-## Checks completed
+## Content checks
 
-- All five `.ipynb` files pass `nbformat.validate`.
-- The notebooks contain **16 original code excerpts**. Each block exactly matches its recorded contiguous range in a decoded original input cell.
-- All **14 nonempty calculation input cells** across the two original `.nb` files are transcribed into readable `.wl` files, with original `BoxData` and line information in paired JSON files.
-- Plot-label strings, including escaped line continuations and embedded Wolfram formatting, remain intact in the transcription. Unknown executable box types cause the extractor to fail explicitly.
-- **27 original thesis pages** are stored as unaltered full-page PNG renders, with **34 placements** across the five notebooks. No axes, curve values, equations, captions or colours have been edited. The PDF-to-printed-page mapping and page-image SHA-256 hashes are recorded in `reference_pages/manifest.json`.
-- All page images were inspected in a contact sheet, with equation and figure pages additionally inspected at full size.
-- Hashes verify that the original **two `.nb` and five `.wdx` files** are unchanged.
-- Every notebook is a Markdown-only reading notebook. It contains no synthetic execution output or freshly generated numerical plot.
+- All five notebooks pass `nbformat.validate`.
+- Every displayed Mathematica block matches its recorded contiguous range in the original decoded input cell.
+- The two complete source transcriptions still match the original `.nb` input cells and raw `BoxData`.
+- Original `.nb` and `.wdx` file hashes are unchanged.
+- All 30 diagram regions are included in the notebooks. Their pixel arrays are identical to their recorded rectangles in the archived source PNGs.
+- Diagram regions retain the plotted axes, tick labels, curves, colours, original plot titles and mesh details. Surrounding document text and page numbers are excluded.
+- Notebook text contains no document comparisons, chapter references, original-document links or full-page-image references.
+- All notebook cells are reading material; no synthetic execution output is supplied.
 
-Run the verification with:
+The extraction contact sheet was visually reviewed to check that captions and surrounding text were removed and plot labels were retained. Explanations distinguish sorted-state index, spatial position and energy axes; note missing colour scales; and describe the reversed height scales of the relevant surfaces.
+
+## Reproduce the checks
 
 ```bash
 python tools/verify_sources.py
 ```
 
-## What was not validated
-
-Mathematica was not available for a native rerun. The current source inputs contain disabled vortex/impurity sections and do not supply an active workflow for all thesis figures. Consequently, the displayed thesis figures are identified as **archived source results**, not outputs produced by this revision.
-
-The thesis's equations, comments, plot labels and interpretations are preserved as source material. They have not been silently corrected. The earlier Python tutorial's seven numerical tests and its convergence results do not apply to this source-only edition; the Python solver and its numerical plots have been removed from the current repository version.
-
-## Rendering
-
-The complete supplied PDF was downloaded through the user's connected Drive. Selected pages were rendered using Poppler `pdftoppm -r 120 -png`. The source has 74 PDF pages; printed page numbers for the selected pages equal PDF page numbers minus 14. The images retain the complete page layout, including figures, captions, equations, explanatory text and printed page numbers.
+This is a provenance and presentation check. Mathematica was not rerun, no matrix entries were changed, and no numerical curves were regenerated. The archived diagram inputs are not all present as active plotting routines in the saved programs; the guides say so beside the relevant code.

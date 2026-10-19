@@ -1,3 +1,4 @@
-# Building and verifying the source-only reading notebooks.
+# Build and verify the reading notebooks and exact diagram-region extraction.
 nbformat>=5.9,<6
-# Original calculations require Mathematica; Python does not execute them.
+Pillow>=10,<13
+# Original numerical calculations require Mathematica.
